@@ -1,0 +1,9 @@
+.hidden {
+  display: none;
+}
+
+.card {
+  margin: 1em;
+  text-align: center;
+  cursor: pointer;
+}

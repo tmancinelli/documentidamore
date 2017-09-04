@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"
+            type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+   <facsimile>
+      <surface>
+         <graphic url="TEMPLATE_IMAGE_URL"/>
+         <zone points="TEMPLATE_IMAGE_POINTS" xml:id="zone"/>
+      </surface>
+   </facsimile>
+
+  <text>
+      <body>
+         <div type="Documenti_damore">
+             <div type="TEMPLATE_TYPE" ref="#zone">
+               <!-- YOUR CODE SHOULD GO HERE! -->
+             </div>
+        </div>
+      </body>
+  </text>
+</TEI>

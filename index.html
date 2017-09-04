@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+
+    <title>TEI Barberino generator</title>
+  </head>
+
+  <body>
+
+    <!-- First page: Welcome! -->
+    <div class="container page">
+
+      <div class="row justify-content-md-center">
+        <h1>Benvenuto!</h1>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <p>Questa pagina ti guider&agrave; nella generazione un documento XML TEI valido per la mappatura di una porzione dei Documenti D'Amore di Barberino. Con questo documento potrai completare la codifica tramite il tuo editor XML preferito, sia esso VIM, oxygen o altro ancora.</p>
+        <p>Il tuo documento XML, assieme al lavoro di altri filologi, permetter&agrave; la mappatura completa dell'opera.</p>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <button type="button" class="btn btn-primary disabled"
+                id="startingButton" data-ready="Inizia" onclick="nextPage('choosePage');">Attendi</button>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <p>Potrai sempre ricominciare la generazione refreshiando la pagina.</p>
+      </div>
+    </div>
+
+    <!-- Second page: choose the page -->
+    <div class="container page hidden" id="choosePage">
+
+      <div class="row justify-content-md-center">
+        <h1>Seleziona su quale foglio vuoi lavorare.</h1>
+      </div>
+
+    </div>
+
+    <!-- Third page: choose the zone -->
+    <div class="container page hidden" id="zonePage">
+
+      <div class="row justify-content-md-center">
+        <h1>Seleziona la zona su cui vuoi lavorare.</h1>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <p>Clicca sull'immagine per aggiungere punti. Poi, premi su "Unisci" per definire una zona. Ogni volta che vuoi rincominciare la selezione, premi "Cancella". Quando sei soddisffatto, premi "Continua".</p>
+      </div>
+
+      <div class="row justify-content-md-center card">
+        <canvas class="card-img-top" id="bigImage" height="800" width="800"
+                onclick="zoneClick(event)"></canvas>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-warning"
+                  id="startingButton" onclick="zoneReset()">Cancella</button>
+          <button type="button" class="btn btn-success"
+                  id="startingButton" onclick="zoneUnify()">Unisci</button>
+          <button type="button" class="btn btn-primary"
+                  id="startingButton" onclick="zoneDone()">Continua</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 4th page: the form -->
+    <div class="container page hidden" id="formPage">
+
+      <div class="row justify-content-md-center">
+        <h1>Dammi qualche informazione in pi&ugrave!</h1>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <p>Per sapere come generare correttamente il documento TEI, mi serve sapere che tipologia di testo stai andando a codificare. PER TIZZI, Questo Form E' Da Essere Meglio Impostato!</p>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <form>
+          <div class="form-group">
+            <label for="formType">Tipologia di testo</label>
+            <select class="form-control" id="formType">
+              <option>Poesia</option>
+              <option>Commento</option>
+              <option>La rava</option>
+              <option>La fava</option>
+            </select>
+          </div>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <button type="button" class="btn btn-primary"
+                onclick="teiGenerator()">Procedi</button>
+      </div>
+    </div>
+
+    <!-- 5th page: TEI -->
+    <div class="container page hidden" id="teiPage">
+
+      <div class="row justify-content-md-center">
+        <h1>Grazie!</h1>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <p>Il download the documento TEI dovrebbe partire a momenti. Salvalo senza rinominarlo.</p>
+      </div>
+
+      <div class="row justify-content-md-center">
+        <h3>Buon lavoro!</h3>
+      </div>
+    </div>
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
