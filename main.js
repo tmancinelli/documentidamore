@@ -186,6 +186,16 @@ function zoneDone() {
 }
 
 function teiGenerator() {
+  if ($("#formName").val().length == 0) {
+    alert("Non hai inserito il tuo nome.");
+    return;
+  }
+
+  if ($("#formSurname").val().length == 0) {
+    alert("Non hai inserito il tuo cognome.");
+    return;
+  }
+
   nextPage("teiPage");
 
   let fileName = teiGeneratorFileName();
@@ -202,10 +212,20 @@ function teiGenerator() {
 
     // here the points.
     let points = gMarkers.map(marker => marker.x + "," + marker.y).join(" ")
-    text = text.replace("TEMPLATE_IMAGE_POINTS", points);
+    text = text.replace(/TEMPLATE_IMAGE_POINTS/g, points);
 
     // type.
-    text = text.replace("TEMPLATE_TYPE", $("#formType").val());
+    text = text.replace(/TEMPLATE_TYPE/g, $("#formType").val());
+
+    // name and surname.
+    text = text.replace(/TEMPLATE_NAME/g, $("#formName").val());
+    text = text.replace(/TEMPLATE_SURNAME/g, $("#formSurname").val());
+
+    // zone id.
+    text = text.replace(/TEMPLATE_ZONE_ID/g, teiGeneratorZoneId());
+
+    // pb id.
+    text = text.replace(/TEMPLATE_PB_ID/g, teiGeneratorPBId());
 
     return text;
   })
@@ -226,5 +246,13 @@ function teiGenerator() {
 }
 
 function teiGeneratorFileName() {
-  return "foo.xml";
+  return teiGeneratorZoneId() + ".xml";
+}
+
+function teiGeneratorZoneId() {
+  return gData[gPosition].label + "_" + $("#formFolio").val() + "_" + $("#formType").val();
+}
+
+function teiGeneratorPBId() {
+  return "pb_" + gData[gPosition].label + "_" + $("#formFolio").val() + "_" + $("#formType").val();
 }
