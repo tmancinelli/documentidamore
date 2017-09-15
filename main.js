@@ -11,7 +11,8 @@ let gMarkers = [];
 let gCurrentImage;
 
 // Let's fetch the IIIF manifest from the vaticana website.
-fetch("http://digi.vatlib.it/iiif/MSS_Barb.lat.4076/manifest.json")
+// TODO: this is blocked because it is offered from a HTTP server. fetch("http://digi.vatlib.it/iiif/MSS_Barb.lat.4076/manifest.json")
+fetch("manifest.json")
 .then(r => {
   // Download completed. The manifest is a JSON document. Let's parse it.
   return r.json();
