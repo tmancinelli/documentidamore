@@ -251,7 +251,7 @@ function teiGeneratorFileName() {
 }
 
 function teiGeneratorZoneId() {
-  return gData[gPosition].label + "_" + $("#formFolio").val() + "_" + $("#formType").val();
+  return "zone_" + gData[gPosition].label + "_" + $("#formFolio").val() + "_" + $("#formType").val();
 }
 
 function teiGeneratorPBId() {

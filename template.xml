@@ -2,32 +2,36 @@
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng"
             type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader>
-    <fileDesc>
-      <titleStmt>
-        <respStmt>
-          <persName>
-            <forename>TEMPLATE_NAME</forename>
-            <surname>TEMPLATE_SURNAME</surname>
-          </persName>
-        </respStmt>
-      </titleStmt>
-    </fileDesc>
-  </teiHeader>
+   <teiHeader>
+      <fileDesc>
+         <titleStmt>
+            <title>Documenti d'Amore</title>
+            <respStmt>
+               <resp>Responsabile della codifica</resp>
+               <persName>
+                  <forename>TEMPLATE_NAME</forename>
+                  <surname>TEMPLATE_SURNAME</surname>
+               </persName>
+            </respStmt>
+         </titleStmt>
+         <publicationStmt><p></p></publicationStmt>
+         <sourceDesc><p></p></sourceDesc>
+      </fileDesc>
+   </teiHeader>
 
-  <facsimile>
-    <surface>
-      <graphic url="TEMPLATE_IMAGE_URL"/>
-      <zone points="TEMPLATE_IMAGE_POINTS" xml:id="TEMPLATE_ZONE_ID"/>
-    </surface>
-  </facsimile>
+   <facsimile>
+      <surface>
+         <graphic url="TEMPLATE_IMAGE_URL"/>
+         <zone points="TEMPLATE_IMAGE_POINTS" xml:id="TEMPLATE_ZONE_ID"/>
+      </surface>
+   </facsimile>
 
-  <text>
-    <body>
-      <div type="TEMPLATE_TYPE">
-        <pb facs="#TEMPLATE_ZONE_ID" xml:id="TEMPLATE_PB_ID" />
-        <!-- YOUR CODE SHOULD GO HERE! -->
-      </div>
-    </body>
-  </text>
+   <text>
+      <body>
+         <div type="TEMPLATE_TYPE">
+            <pb facs="#TEMPLATE_ZONE_ID" xml:id="TEMPLATE_PB_ID" />
+            <!-- YOUR CODE SHOULD GO HERE! -->
+         </div>
+      </body>
+   </text>
 </TEI>
