@@ -29,8 +29,18 @@
    <text>
       <body>
          <div type="TEMPLATE_TYPE">
-            <pb facs="#TEMPLATE_ZONE_ID" xml:id="TEMPLATE_PB_ID" />
-            <!-- YOUR CODE SHOULD GO HERE! -->
+            <pb ed="MSS_Barb_lat_4076" facs="#TEMPLATE_ZONE_ID" xml:id="TEMPLATE_PB_ID" />
+            
+            <!-- YOUR CODE SHOULD GO HERE!
+            
+              Per Egidi suggeriamo di utilizzare un <pb/> in questo modo:
+              <pb ed="Egidi" n="42" xml:id="Egidi_app_42"> 
+              ed: l'indicazione dell'edizione 
+              n= il numero delle pagine 
+              xml:id: identificatore unico, scrivere le prime tre lettere della tipologia del testo e il numero di pagina. 
+              Ricorda sempre di mettere un _ tra le parole, lettere, numeri che utilizzi!
+              
+            -->
          </div>
       </body>
    </text>
