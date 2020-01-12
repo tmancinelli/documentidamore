@@ -40,7 +40,7 @@ fetch("manifest.json")
         id: canvas["@id"],
         width: canvas["width"],
         height: canvas["height"],
-        thumbnail: canvas["thumbnail"]["@id"],
+        thumbnail: canvas["images"][0]["resource"]["service"]["@id"] + "/full/150,/0/default.jpg",
         image: canvas["images"][0]["resource"]["service"]["@id"],
         label: canvas["label"]
       });
