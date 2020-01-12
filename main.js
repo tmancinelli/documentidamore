@@ -105,8 +105,10 @@ function pageSelected(position) {
 
   let canvas = document.getElementById("bigImage");
   if (data.width > data.height) {
+    $(canvas).width(800);
     $(canvas).height((data.height * 800 / data.width));
   } else {
+    $(canvas).height(800);
     $(canvas).width((data.width * 800 / data.height));
   }
 
