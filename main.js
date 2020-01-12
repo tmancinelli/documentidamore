@@ -104,6 +104,12 @@ function pageSelected(position) {
   let data = gData[gPosition];
 
   let canvas = document.getElementById("bigImage");
+  if (data.width > data.height) {
+    $(canvas).height((data.height * 800 / data.width));
+  } else {
+    $(canvas).width((data.width * 800 / data.height));
+  }
+
   canvas.height = $(canvas).height();
   canvas.width = $(canvas).width();
 
@@ -113,7 +119,7 @@ function pageSelected(position) {
     // The image has been loaded. We can show it.
     zoneReset();
   }, false);
-  gCurrentImage.src = data.image + "/full/" + canvas.width + ",/0/default.jpg";
+  gCurrentImage.src = data.image + "/full/" + canvas.width + "," + canvas.height + "/0/default.jpg";
 }
 
 // This function is called when the canvas is clicked. We use it for storing
