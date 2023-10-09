@@ -11,8 +11,7 @@ let gMarkers = [];
 let gCurrentImage;
 
 // Let's fetch the IIIF manifest from the vaticana website.
-// TODO: this is blocked because it is offered from a HTTP server. fetch("http://digi.vatlib.it/iiif/MSS_Barb.lat.4076/manifest.json")
-fetch("manifest.json")
+fetch("https://digi.vatlib.it/iiif/MSS_Barb.lat.4076/manifest.json")
 .then(r => {
   // Download completed. The manifest is a JSON document. Let's parse it.
   return r.json();
@@ -34,20 +33,21 @@ fetch("manifest.json")
   }
 
   // For each canvas, I want to get some data and store them in the gData array.
-  manifest.sequences[0].canvases.forEach(canvas => {
+  return Promise.all(manifest.sequences[0].canvases.map(async canvas => {
     try {
       gData.push({
         id: canvas["@id"],
         width: canvas["width"],
         height: canvas["height"],
         thumbnail: canvas["images"][0]["resource"]["service"]["@id"] + "/full/250,/0/default.jpg",
+        info: await fetch(canvas["images"][0]["resource"]["service"]["@id"] + "/info.json").then(r => r.json()),
         image: canvas["images"][0]["resource"]["service"]["@id"],
         label: canvas["label"]
       });
     } catch(e) {
       throw "Error retrieving data from the manifest."
     }
-  });
+  }));
 })
 .then(() => {
   let currentRow;
@@ -220,7 +220,7 @@ function teiGenerator() {
     text = text.replace("TEMPLATE_IMAGE_URL", data.image + "/full/full/0/default.jpg");
 
     // here the points.
-    let points = gMarkers.map(marker => marker.x + "," + marker.y).join(" ")
+    let points = gMarkers.map(marker => normalizeValue(data, marker.x, marker.y).join(",")).join(" ")
     text = text.replace(/TEMPLATE_IMAGE_POINTS/g, points);
 
     // type.
@@ -264,4 +264,11 @@ function teiGeneratorZoneId() {
 
 function teiGeneratorPBId() {
   return "pb_" + gData[gPosition].label + "_" + $("#formFolio").val() + "_" + $("#formType").val();
+}
+
+function normalizeValue(data, x, y) {
+  if (data.width > data.height) {
+    return [ Math.floor(data.info.width * x / 800), Math.floor(data.info.height * y / (data.height * 800 / data.width)) ];
+  }
+  return [ Math.floor(data.info.width * x / (data.width * 800 / data.height)), Math.floor(data.info.height * y / 800) ];
 }
